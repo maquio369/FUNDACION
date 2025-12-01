@@ -25,7 +25,7 @@
                 <li><a href="#colaboradores">Colaboradores</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <a href="#donaciones" class="btn-donate-nav">DONATE</a>
+            <a href="#donaciones" class="btn-donate-nav">DONACIONES</a>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -100,35 +100,7 @@
                 </p>
             </div>
             
-            <div class="activities-grid">
-                <div class="activity-card fade-in">
-                    <div class="activity-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h4 class="activity-title">Actividades Culturales y Educativas</h4>
-                    <p class="activity-description">
-                        Desarrollamos programas educativos y culturales que fortalecen las capacidades de nuestras comunidades.
-                    </p>
-                </div>
-                <div class="activity-card fade-in">
-                    <div class="activity-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h4 class="activity-title">Servicios Asistenciales y de Salud</h4>
-                    <p class="activity-description">
-                        Brindamos servicios asistenciales y de salud a las comunidades más vulnerables.
-                    </p>
-                </div>
-                <div class="activity-card fade-in">
-                    <div class="activity-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4 class="activity-title">Fomento de la Participación Ciudadana</h4>
-                    <p class="activity-description">
-                        Promovemos la participación activa de la ciudadanía en el desarrollo de sus comunidades.
-                    </p>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -200,7 +172,7 @@
             <h2 class="section-title">Nuestras Causas</h2>
             <div class="causes-grid">
                 <div class="cause-card fade-in">
-                    <div class="cause-image"></div>
+                    <div class="cause-image slideshow-culture" style="background-image: url('images/CULTURA1.PNG')"></div>
                     <div class="cause-content">
                         <h3 class="cause-title">Actividades Culturales y Educativas</h3>
                         <p class="cause-description">
@@ -219,7 +191,7 @@
                     </div>
                 </div>
                 <div class="cause-card fade-in">
-                    <div class="cause-image" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')"></div>
+                    <div class="cause-image slideshow-health" style="background-image: url('images/DOCTOR2.PNG')"></div>
                     <div class="cause-content">
                         <h3 class="cause-title">Servicios Asistenciales y de Salud</h3>
                         <p class="cause-description">
@@ -238,7 +210,7 @@
                     </div>
                 </div>
                 <div class="cause-card fade-in">
-                    <div class="cause-image" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')"></div>
+                    <div class="cause-image slideshow-citizen" style="background-image: url('images/CIUDADANA1.PNG')"></div>
                     <div class="cause-content">
                         <h3 class="cause-title">Fomento de la Participación Ciudadana</h3>
                         <p class="cause-description">
@@ -400,14 +372,7 @@
 
 
                         <!-- Nuevo Colaborador: Ecosistemas Sostenibles A.C. -->
-                        <div class="collaborator-card">
-                            <div class="collaborator-image">
-                                <img src="images/logo Limpiox.png" alt="S3" onerror="this.src='https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=300&h=300&fit=crop&crop=face'">
-                            </div>
-                            <h3 class="collaborator-name">S3</h3>
-                            <p class="collaborator-role">Colaborador</p>
-                            <button class="btn-follow">Seguir</button>
-                        </div>
+                      
 
                         <!-- Nuevo Colaborador 4 -->
                         <div class="collaborator-card">
@@ -670,6 +635,40 @@
         updateCardsPerView();
         updateCarousel();
 
+        // Slideshow automático para la sección de salud
+        const healthImages = ['images/DOCTOR2.PNG', 'images/DOCTOR3.PNG'];
+        const healthSlideshow = document.querySelector('.slideshow-health');
+        let currentHealthIndex = 0;
+
+        function changeHealthImage() {
+            currentHealthIndex = (currentHealthIndex + 1) % healthImages.length;
+            healthSlideshow.style.backgroundImage = `url('${healthImages[currentHealthIndex]}')`;
+        }
+
+        // Slideshow automático para la sección de participación ciudadana
+        const citizenImages = ['images/CIUDADANA1.PNG', 'images/CIUDADANA2.PNG'];
+        const citizenSlideshow = document.querySelector('.slideshow-citizen');
+        let currentCitizenIndex = 0;
+
+        function changeCitizenImage() {
+            currentCitizenIndex = (currentCitizenIndex + 1) % citizenImages.length;
+            citizenSlideshow.style.backgroundImage = `url('${citizenImages[currentCitizenIndex]}')`;
+        }
+
+        // Slideshow automático para la sección de actividades culturales
+        const cultureImages = ['images/CULTURA1.PNG', 'images/CULTURA2.PNG'];
+        const cultureSlideshow = document.querySelector('.slideshow-culture');
+        let currentCultureIndex = 0;
+
+        function changeCultureImage() {
+            currentCultureIndex = (currentCultureIndex + 1) % cultureImages.length;
+            cultureSlideshow.style.backgroundImage = `url('${cultureImages[currentCultureIndex]}')`;
+        }
+
+        // Cambiar imágenes cada 3 segundos
+        setInterval(changeHealthImage, 3000);
+        setInterval(changeCitizenImage, 3000);
+        setInterval(changeCultureImage, 3000);
 
     </script>
 </body>
