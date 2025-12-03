@@ -232,10 +232,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('images/logo_oficial.png') center/contain no-repeat;
+  background: 
+    url('images/collagereal.png') left/50% 100% no-repeat,
+    url('images/collagereal2.png') right/50% 100% no-repeat;
   position: relative;
   overflow: hidden;
   padding: var(--space-64) var(--space-32);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: 100px;
+  background: url('images/logo_oficial.png') center/contain no-repeat;
+  z-index: 2;
 }
 
 .hero::before {
@@ -429,29 +442,59 @@ body {
 }
 
 .featured-block.education {
-  background: var(--color-accent);
+  background: var(--color-accent) url('images/lentes1.png') center/cover;
+  position: relative;
+}
+
+.featured-block.education::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(213, 133, 14, 0.4);
+  border-radius: var(--radius-lg);
 }
 
 .featured-block.volunteer {
-  background: var(--color-dark);
+  background: var(--color-dark) url('images/payaso.png') center/cover;
+  position: relative;
+}
+
+.featured-block.volunteer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(5, 7, 8, 0.4);
+  border-radius: var(--radius-lg);
 }
 
 .featured-block h3 {
   font-size: var(--font-size-3xl);
   margin-bottom: var(--space-20);
   font-weight: var(--font-weight-bold);
+  position: relative;
+  z-index: 1;
 }
 
 .featured-block p {
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-32);
   opacity: 0.9;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-discover, .btn-join {
   background: white;
   color: var(--color-dark);
   align-self: center;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-discover:hover, .btn-join:hover {
@@ -810,6 +853,27 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Ajuste específico para logos anchos como Limpiox */
+.collaborator-image img[src*="Limpiox"] {
+  object-fit: contain;
+  padding: 10px;
+  background: white;
+}
+
+/* Ajuste específico para S3 Seguridad privada */
+.collaborator-image img[src*="S3 Seguridad privada"] {
+  object-fit: contain;
+  padding: 15px;
+  background: white;
+}
+
+/* Ajuste específico para Clínica San Sebastián */
+.collaborator-image img[src*="Clinica San sebastian"] {
+  object-fit: contain;
+  padding: 10px;
+  background: white;
 }
 
 .collaborator-name {
@@ -1363,6 +1427,14 @@ textarea.form-control {
 
   .hero {
     padding: var(--space-20);
+    background: url('images/collagereal.png') center/cover no-repeat;
+  }
+
+  .hero::after {
+    width: 100px;
+    height: 70px;
+    top: 10px;
+    right: 10px;
   }
 
   .bank-details {
